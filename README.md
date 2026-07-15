@@ -1,16 +1,34 @@
-# React + Vite
+# Personal Event Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React + Vite web application that helps users create, manage, and organise personal or professional events.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- User registration with validation
+- User login system
+- Personal dashboard
+- Create new events
+- View upcoming events
+- Edit existing events
+- Delete events
+- Help section with user guidance
+- Responsive pastel pink design
+- Context API state management
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- JavaScript
+- JSX
+- React Router
+- React Bootstrap
+- Context API
+- CSS
 
-## Expanding the Oxlint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Clone the repository:
+
+```bash
+git clone YOUR-GITHUB-REPOSITORY-LINK
