@@ -2,20 +2,50 @@
 body {
   background-color: #fff8fb;
   font-family: Arial, sans-serif;
+  color: #4a4a4a;
 }
 
-/* Form and content cards */
+/* Header styling */
+.header {
+  background-color: #f8d7e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #4a4a4a !important;
+  font-size: 1.3rem;
+}
+
+.nav-link {
+  color: #4a4a4a !important;
+  margin-left: 10px;
+}
+
+.nav-link:hover {
+  color: #ee8fb5 !important;
+}
+
+
+/* Cards used throughout the app */
 .register-card,
 .event-card,
 .help-card {
-  width: 100%;
-  max-width: 500px;
+  background-color: white;
   border: 1px solid #f4d7e4;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
-/* Pink buttons */
+
+/* Form cards */
+.register-card {
+  width: 100%;
+  max-width: 500px;
+}
+
+
+/* Buttons */
 .register-btn {
   background-color: #f7a8c4;
   border: none;
@@ -26,24 +56,28 @@ body {
   background-color: #ee8fb5;
 }
 
+
 /* Event cards */
 .event-card {
   max-width: 700px;
   margin: auto;
 }
 
-/* Help card */
+
+/* Help page */
 .help-card {
   max-width: 800px;
   margin: auto;
 }
+
 
 /* Page spacing */
 .container {
   padding-bottom: 40px;
 }
 
-/* Mobile styling */
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
 
   .register-card,
@@ -52,24 +86,11 @@ body {
     width: 95%;
   }
 
-  h2 {
-    font-size: 1.6rem;
+  .navbar-brand {
+    font-size: 1.1rem;
   }
-}
 
-.header {
-  background-color: #f8d7e6;
-}
-
-.navbar-brand {
-  font-weight: bold;
-  color: #4a4a4a;
-}
-
-.nav-link {
-  color: #4a4a4a;
-}
-
-.nav-link:hover {
-  color: #ee8fb5;
+  h2 {
+    font-size: 1.5rem;
+  }
 }
