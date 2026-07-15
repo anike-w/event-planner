@@ -15,3 +15,9 @@
 .register-btn:hover {
   background-color: #ee8fb5;
 }
+
+.event-card {
+  border: 1px solid #f4d7e4;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
