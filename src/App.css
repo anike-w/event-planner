@@ -1,0 +1,17 @@
+.register-card {
+  max-width: 450px;
+  width: 100%;
+  margin-top: 40px;
+  border: 1px solid #f4d7e4;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.register-btn {
+  background-color: #f7a8c4;
+  border: none;
+}
+
+.register-btn:hover {
+  background-color: #ee8fb5;
+}
