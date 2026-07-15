@@ -1,27 +1,23 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
     <Navbar
       expand="lg"
-      fixed="top"
-      style={{ backgroundColor: "#F8C8DC" }}
+      className="header"
+      sticky="top"
     >
       <Container>
-        <Navbar.Brand>🌸 Event Planner</Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand as={NavLink} to="/dashboard">
+          Event Planner
+        </Navbar.Brand>
 
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="navbar-nav" />
+
+        <Navbar.Collapse id="navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={NavLink} to="/">
-              Register
-            </Nav.Link>
-
-            <Nav.Link as={NavLink} to="/login">
-              Login
-            </Nav.Link>
 
             <Nav.Link as={NavLink} to="/dashboard">
               Dashboard
@@ -34,8 +30,10 @@ function Header() {
             <Nav.Link as={NavLink} to="/help">
               Help
             </Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
+
       </Container>
     </Navbar>
   );
