@@ -3,6 +3,7 @@ import { Form, Button, Container, Card, Alert } from "react-bootstrap";
 import { EventContext } from "../context/EventContext";
 import { useNavigate } from "react-router-dom";
 
+
 function AddEvent() {
   // Access the addEvent function from Event Context
   const { addEvent } = useContext(EventContext);
