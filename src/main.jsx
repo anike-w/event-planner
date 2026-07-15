@@ -4,11 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App.jsx";
 import UserProvider from "./context/UserContext";
+import EventProvider from "./context/EventContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <UserProvider>
-      <App />
+      <EventProvider>
+        <App />
+      </EventProvider>
     </UserProvider>
   </StrictMode>
 );
