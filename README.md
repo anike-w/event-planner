@@ -31,4 +31,4 @@ A React + Vite web application that helps users create, manage, and organise per
 1. Clone the repository:
 
 ```bash
-git clone YOUR-GITHUB-REPOSITORY-LINK
+git clone https://github.com/anike-w/event-planner.git
