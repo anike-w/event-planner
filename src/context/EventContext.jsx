@@ -7,12 +7,12 @@ function EventProvider({ children }) {
   // Stores all events
   const [events, setEvents] = useState([]);
 
-  // Adds a new event
+  // Add a new event
   const addEvent = (newEvent) => {
     setEvents([...events, newEvent]);
   };
 
-  // Updates an existing event
+  // Update an existing event
   const updateEvent = (updatedEvent) => {
     setEvents(
       events.map((event) =>
@@ -21,9 +21,14 @@ function EventProvider({ children }) {
     );
   };
 
-  // Removes an event
+  // Delete an event
   const deleteEvent = (id) => {
     setEvents(events.filter((event) => event.id !== id));
+  };
+
+  // Find an event using its ID
+  const getEventById = (id) => {
+    return events.find((event) => event.id === Number(id));
   };
 
   return (
@@ -33,6 +38,7 @@ function EventProvider({ children }) {
         addEvent,
         updateEvent,
         deleteEvent,
+        getEventById,
       }}
     >
       {children}
