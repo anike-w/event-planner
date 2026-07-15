@@ -1,23 +1,33 @@
 import { useState, useContext } from "react";
-import { Form, Button, Container, Card, Alert } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import { EventContext } from "../context/EventContext";
 import { useParams, useNavigate } from "react-router-dom";
+import EventForm from "../components/EventForm";
 
 function EditEvent() {
-  // Get the event id from the URL
+  // Get event ID from URL
   const { id } = useParams();
 
-  // Access events and update function
+  // Get events and update function
   const { events, updateEvent } = useContext(EventContext);
 
-  // Find the event that needs editing
+  // Find selected event
   const currentEvent = events.find(
     (event) => event.id === Number(id)
   );
 
   const navigate = useNavigate();
 
-  // Store edited event details
+  // If event is not found
+  if (!currentEvent) {
+    return (
+      <Container className="mt-4">
+        <h3>Event not found.</h3>
+      </Container>
+    );
+  }
+
+  // Store event details
   const [name, setName] = useState(currentEvent.name);
   const [date, setDate] = useState(currentEvent.date);
   const [time, setTime] = useState(currentEvent.time);
@@ -30,7 +40,7 @@ function EditEvent() {
 
   const [error, setError] = useState("");
 
-  // Update event details
+  // Save updated event
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -55,6 +65,7 @@ function EditEvent() {
 
   return (
     <Container className="d-flex justify-content-center mt-4">
+
       <Card className="register-card">
         <Card.Body>
 
@@ -62,72 +73,25 @@ function EditEvent() {
             Edit Event
           </h2>
 
-          {error && (
-            <Alert variant="danger">
-              {error}
-            </Alert>
-          )}
-
-          <Form onSubmit={handleSubmit}>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Event Name</Form.Label>
-              <Form.Control
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Date</Form.Label>
-              <Form.Control
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Time</Form.Label>
-              <Form.Control
-                type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                value={description}
-                onChange={(e) =>
-                  setDescription(e.target.value)
-                }
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-4">
-              <Form.Label>Location</Form.Label>
-              <Form.Control
-                value={location}
-                onChange={(e) =>
-                  setLocation(e.target.value)
-                }
-              />
-            </Form.Group>
-
-            <div className="d-grid">
-              <Button type="submit" className="register-btn">
-                Update Event
-              </Button>
-            </div>
-
-          </Form>
+          <EventForm
+            name={name}
+            setName={setName}
+            date={date}
+            setDate={setDate}
+            time={time}
+            setTime={setTime}
+            description={description}
+            setDescription={setDescription}
+            location={location}
+            setLocation={setLocation}
+            handleSubmit={handleSubmit}
+            buttonText="Update Event"
+            error={error}
+          />
 
         </Card.Body>
       </Card>
+
     </Container>
   );
 }

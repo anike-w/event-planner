@@ -9,26 +9,37 @@ function EventProvider({ children }) {
 
   // Add a new event
   const addEvent = (newEvent) => {
-    setEvents([...events, newEvent]);
+    setEvents((previousEvents) => [
+      ...previousEvents,
+      newEvent,
+    ]);
   };
 
   // Update an existing event
   const updateEvent = (updatedEvent) => {
-    setEvents(
-      events.map((event) =>
-        event.id === updatedEvent.id ? updatedEvent : event
+    setEvents((previousEvents) =>
+      previousEvents.map((event) =>
+        event.id === updatedEvent.id
+          ? updatedEvent
+          : event
       )
     );
   };
 
   // Delete an event
   const deleteEvent = (id) => {
-    setEvents(events.filter((event) => event.id !== id));
+    setEvents((previousEvents) =>
+      previousEvents.filter(
+        (event) => event.id !== id
+      )
+    );
   };
 
-  // Find an event using its ID
+  // Find an event by its ID
   const getEventById = (id) => {
-    return events.find((event) => event.id === Number(id));
+    return events.find(
+      (event) => event.id === Number(id)
+    );
   };
 
   return (
