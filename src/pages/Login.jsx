@@ -1,33 +1,31 @@
 import { useState, useContext } from "react";
-import { Form, Button, Container, Card, Alert } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Container,
+  Card,
+  Alert,
+} from "react-bootstrap";
 import { UserContext } from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
-  // Access user information from Context
   const { user, setIsLoggedIn } = useContext(UserContext);
 
-  // Used to navigate to the Dashboard after login
   const navigate = useNavigate();
 
-  // State variables for the login form
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  // Stores login error messages
   const [error, setError] = useState("");
 
-  // Handles the login form submission
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Check if a user has registered
     if (!user) {
       setError("Please register an account first.");
       return;
     }
 
-    // Check that the login details match the registered user
     if (
       username === user.username &&
       password === user.password
@@ -41,15 +39,22 @@ function Login() {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center">
+    <Container className="d-flex justify-content-center align-items-center mt-4">
       <Card className="register-card">
         <Card.Body>
-          <h2 className="text-center mb-4">Login</h2>
 
-          {/* Display login errors */}
-          {error && <Alert variant="danger">{error}</Alert>}
+          <h2 className="text-center mb-4">
+            Login
+          </h2>
+
+          {error && (
+            <Alert variant="danger">
+              {error}
+            </Alert>
+          )}
 
           <Form onSubmit={handleLogin}>
+
             <Form.Group className="mb-3">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -75,7 +80,16 @@ function Login() {
                 Login
               </Button>
             </div>
+
           </Form>
+
+          <p className="text-center mt-4">
+            Don't have an account?{" "}
+            <Link to="/">
+              Register here
+            </Link>
+          </p>
+
         </Card.Body>
       </Card>
     </Container>
