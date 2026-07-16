@@ -11,7 +11,10 @@ import { useNavigate, Link } from "react-router-dom";
 
 function Register() {
   // Access the user context
-  const { setUser } = useContext(UserContext);
+  const {
+    setUser,
+    setIsLoggedIn,
+  } = useContext(UserContext);
 
   // Used to redirect the user after registration
   const navigate = useNavigate();
@@ -29,7 +32,7 @@ function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    // Check that all fields have been completed
+    // Check that all fields have been been completed
     if (!name || !email || !username || !password) {
       setError("Please complete all fields.");
       return;
@@ -51,11 +54,14 @@ function Register() {
       password,
     });
 
+    // Automatically log the user in
+    setIsLoggedIn(true);
+
     // Clear any previous errors
     setError("");
 
-    // Redirect to Login page
-    navigate("/login");
+    // Go straight to the Dashboard
+    navigate("/dashboard");
   };
 
   return (
@@ -81,9 +87,7 @@ function Register() {
                 type="text"
                 placeholder="Enter your name"
                 value={name}
-                onChange={(e) =>
-                  setName(e.target.value)
-                }
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
 
@@ -93,9 +97,7 @@ function Register() {
                 type="email"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) =>
-                  setEmail(e.target.value)
-                }
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
 
@@ -105,9 +107,7 @@ function Register() {
                 type="text"
                 placeholder="Choose a username"
                 value={username}
-                onChange={(e) =>
-                  setUsername(e.target.value)
-                }
+                onChange={(e) => setUsername(e.target.value)}
               />
             </Form.Group>
 
@@ -117,9 +117,7 @@ function Register() {
                 type="password"
                 placeholder="Create a password"
                 value={password}
-                onChange={(e) =>
-                  setPassword(e.target.value)
-                }
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
 
@@ -134,7 +132,6 @@ function Register() {
 
           </Form>
 
-          {/* Login link for returning users */}
           <p className="text-center mt-4">
             Already have an account?{" "}
             <Link to="/login">
